@@ -28,12 +28,6 @@ jobs:
           - runner: ubuntu-24.04
             os-name: linux
             arch: amd64
-          - runner: ubuntu-24.04-arm
-            os-name: linux
-            arch: aarch64
-          - runner: macos-latest
-            os-name: macos
-            arch: aarch64
 
     runs-on: ${{ matrix.runner }}
 
@@ -81,11 +75,8 @@ jobs:
           merge-multiple: false
 
       - name: Attach binaries to release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe
         with:
           files: |
             binaries/load-generator-linux-amd64/load-generator-linux-amd64
-            binaries/load-generator-linux-aarch64/load-generator-linux-aarch64
-            binaries/load-generator-macos-amd64/load-generator-macos-amd64
-            binaries/load-generator-macos-aarch64/load-generator-macos-aarch64
           fail_on_unmatched_files: true
